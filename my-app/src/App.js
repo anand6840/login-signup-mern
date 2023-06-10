@@ -1,13 +1,12 @@
 import logo from './logo.svg';
 import './App.css';
-import LoginPage from './Component/logIn';
-import SignupPage from './Component/signUp';
+import { AllRoutes } from './Component/AllRoutes/AllRoutes';
+
 
 function App() {
   return (
     <div className="App">
-      <LoginPage/>
-      <SignupPage/>
+      <AllRoutes/>
 
     </div>
   );

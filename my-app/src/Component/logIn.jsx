@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-
+import axios from "axios"
 const LoginPage = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
@@ -12,10 +12,15 @@ const LoginPage = () => {
     setPassword(event.target.value);
   };
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
-    // Add your login logic here
-    console.log(`Username: ${username} Password: ${password}`);
+           let data= await axios.post("http://localhost:8400/login",{username,password})
+    if(data.data.token){
+        alert("Login sucessfully")
+    }else{
+        alert("Login faild")
+    }
+     
   };
 
   return (

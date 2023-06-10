@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-
+ import axios from "axios"
 const SignupPage = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
@@ -17,10 +17,15 @@ const SignupPage = () => {
     setConfirmPassword(event.target.value);
   };
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async(event) => {
     event.preventDefault();
-    // Add your signup logic here
-    console.log(`Username: ${username} Password: ${password}`);
+    if(password==confirmPassword){
+        let data=await axios.post("http://localhost:8400/signup",{username,password})
+        console.log(data)
+    }else{
+        alert("Password missmatch")
+    }
+      
   };
 
   return (
